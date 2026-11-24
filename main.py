@@ -1,20 +1,22 @@
-"""One Word for the Boss — entry: Clockwatcher.
+"""One Word for the Boss — entry generator.
 
-A single word that describes the boss: the one who counts your minutes.
-It works in a kitchen, a warehouse, or an office — the boss who watches
-the clock on your time while wasting plenty of it himself. Funny because
-it flips the power dynamic: he guards the clock, you lose the minutes.
+Writes the single-word entry "Clockwatcher" to /output/entry.txt
+(creating the /output directory if it does not exist).
+The word is 12 characters, one word, within the 1-30 character gate.
 """
 
-ENTRY_WORD = "Clockwatcher"  # 12 chars, one word, no spaces — gate: 1-30 chars
+import os
+
+# The entry word: 12 characters, a single word — inside the 1-30 char gate.
+ENTRY = "Clockwatcher"
+OUTPUT_PATH = "/output/entry.txt"
 
 
 def main() -> None:
-    import os
-
-    os.makedirs("/output", exist_ok=True)
-    with open("/output/entry.txt", "w", encoding="utf-8") as f:
-        f.write(ENTRY_WORD)
+    os.makedirs(os.path.dirname(OUTPUT_PATH), exist_ok=True)
+    with open(OUTPUT_PATH, "w", encoding="utf-8") as f:
+        f.write(ENTRY)
+    print(f"Wrote {ENTRY!r} to {OUTPUT_PATH}")
 
 
 if __name__ == "__main__":
